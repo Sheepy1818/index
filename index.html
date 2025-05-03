@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиника реабилитационной стоматологии</title>
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2a6496;
+        }
+        
+        .logo span {
+            color: #4CAF50;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2a6496;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 40px; /* Размер логотипа */
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2a6496;
+        }
+        
+        .logo-text span {
+            color: #4CAF50;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+        
+        /* Основной контент */
+        main {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2 {
+            color: #2a6496;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        /* Главная страница */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3e8e41;
+            transform: translateY(-3px);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item img {
+            width: 40px;
+            margin-right: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+        }
+        
+        .social-links a {
+            margin-left: 15px;
+        }
+        
+        .social-links img {
+            width: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Услуги */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: #2a6496;
+            margin-bottom: 15px;
+        }
+        
+        /* Специалисты */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            color: #2a6496;
+            margin-bottom: 10px;
+        }
+        
+        .member-info p {
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Цены */
+        .pricing {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+        }
+        
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .price-table th, .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .price-table th {
+            background-color: #f5f5f5;
+            color: #2a6496;
+        }
+        
+        .price-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .price-category {
+            color: #2a6496;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .pricing {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+        }
+        
+        .price-tables-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .price-table-wrapper {
+            overflow-x: auto;
+        }
+        
+        .price-table {
+            width: 100%;
+            min-width: 600px; /* Минимальная ширина таблицы */
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed; /* Фиксированная ширина колонок */
+        }
+        
+        .price-table th, 
+        .price-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            word-wrap: break-word; /* Перенос длинных слов */
+        }
+        
+        .price-table th {
+            background-color: #f5f5f5;
+            color: #2a6496;
+            font-weight: 600;
+        }
+        
+        .price-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .price-table th:nth-child(1),
+        .price-table td:nth-child(1) {
+            width: 70%;
+        }
+        
+        .price-table th:nth-child(2),
+        .price-table td:nth-child(2) {
+            width: 30%;
+            text-align: right;
+        }
+        
+        .price-category {
+            color: #2a6496;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .price-note {
+            margin-top: 30px;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .pricing {
+                padding: 20px;
+            }
+            
+            .price-table {
+                font-size: 14px;
+            }
+            
+            .price-table th, 
+            .price-table td {
+                padding: 10px 8px;
+            }
+        }
+        
+        /* Контакты */
+        .contacts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-details {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-details h3 {
+            color: #2a6496;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            color: #4CAF50;
+            font-size: 20px;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Форма записи */
+        .appointment-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #2a6496;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            font-size: 14px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-item {
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .contacts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .pricing {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Клиника реабилитационной стоматологии<span>.</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#team">Специалисты</a></li>
+                    <li><a href="#pricing">Цены</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <img src="D:\клиника.png" alt="Логотип клиники" class="logo-img">
+                    <div class="logo-text">Клиника реабилитационной стоматологии<span>.</span></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#team">Специалисты</a></li>
+                    <li><a href="#pricing">Цены</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+
+    <!-- Основной контент -->
+    <main>
+        <!-- Главная страница -->
+        <section id="home" class="home-section">
+            <div class="container">
+                <div class="hero">
+                    <h1>Реабилитационная стоматология</h1>
+                    <p>Профессиональный подход к восстановлению здоровья ваших зубов и красивой улыбки</p>
+                    <a href="#appointment" class="btn">Записаться на прием</a>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt" style="color: red;"></i>
+                        <span>Адрес</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 978 827-85-06</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="social-links">
+                            <a href="https://vk.com/ВК" target="_blank"><img src="https://www.svgrepo.com/show/303449/vk-1-logo.svg" alt="VK"></a>
+                            <a href="https://t.me/ТГ" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+                            <a href="https://wa.me/ватсап" target="_blank"><img src="https://www.svgrepo.com/show/28155/whatsapp.svg" alt="WhatsApp"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2>Наши услуги</h2>
+                <div class="services">
+                    <div class="service-card">
+                        <img src="https://i.pinimg.com/736x/b9/f9/c2/b9f9c27c252139504f404a888e4a3fd5.jpg" alt="Имплантация зубов">
+                        <div class="service-content">
+                            <h3>Имплантация зубов</h3>
+                            <p>Устанавливаем надежные импланты, которые заменяют корни зубов, а затем фиксируем на них коронки, мосты или протезы. Восстанавливаем утраченные зубы с естественным видом и функциональностью.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://i.pinimg.com/736x/92/1a/65/921a654cf48b275868ef7d9ad6be1a22.jpg" alt="Протезирование">
+                        <div class="service-content">
+                            <h3>Лечение зубов</h3>
+                            <p>Проводим диагностику и терапию кариеса, пульпита, периодонтита, используя современные материалы и технологии. Чистим и пломбируем каналы, ставим качественные пломбы, чтобы сохранить ваши зубы здоровыми.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <img src="https://belaya-estetika.ru/upload/medialibrary/0c6/b7kihskyem7m0bsrm3locog2zzt3219d.jpg" alt="Реабилитация">
+                        <div class="service-content">
+                            <h3>Удаление зубов</h3>
+                            <p>Выполняем бережное и безболезненное удаление зубов любой сложности, включая ретинированные и дистопированные. Используем щадящие методики для минимизации дискомфорта и быстрого заживления.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Специалисты -->
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2>Наши специалисты</h2>
+                <div class="team">
+                    <div class="team-member">
+                        <img src="тут должно быть фото стоматолога" alt="Главный врач Бобошко Артем Андреевич">
+                        <div class="member-info">
+                            <h3>Бобошко Артем Андреевич</h3>
+                            <p>Главный врач, ваша специальность</p>
+                            <p>Опыт работы: ...</p>
+                            <a href="#appointment" class="btn" onclick="setSpecialist('Бобошко Артем Андреевич')">Записаться</a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="тут должно быть фото стоматолога" alt="Доктор Пригодей Елена Васильевна">
+                        <div class="member-info">
+                            <h3>Пригодей Елена Васильевна</h3>
+                            <p>Терапевт</p>
+                            <p>Опыт работы:</p>
+                            <a href="#appointment" class="btn" onclick="setSpecialist('Пригодей Елена Васильевна')">Записаться</a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="тут должно быть фото стоматолога" alt="Доктор Железко Антонина Михайловна">
+                        <div class="member-info">
+                            <h3>Железко Антонина Михайловна</h3>
+                            <p>Терапевт</p>
+                            <p>Опыт работы:</p>
+                            <a href="#appointment" class="btn" onclick="setSpecialist('Железко Антонина Михайловна')">Записаться</a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="тут должно быть фото стоматолога" alt="Доктор Тюрина светлана александровна">
+                        <div class="member-info">
+                            <h3>Тюрина Светлана Александровна</h3>
+                            <p>Терапевт</p>
+                            <p>Опыт работы:</p>
+                            <a href="#appointment" class="btn" onclick="setSpecialist('Тюрина Светлана Александровна')">Записаться</a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="тут должно быть фото стоматолога" alt="Доктор Сулыма Александр Владимирович">
+                        <div class="member-info">
+                            <h3>Сулыма Александр Владимирович</h3>
+                            <p>Терапевт</p>
+                            <p>Опыт работы:</p>
+                            <a href="#appointment" class="btn" onclick="setSpecialist('Сулыма Александр Владимирович')">Записаться</a>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="тут должно быть фото стоматолога" alt="Доктор Абдо Хуссеин Али">
+                        <div class="member-info">
+                            <h3>Абдо Хуссеин Али</h3>
+                            <p>Хирург</p>
+                            <p>Опыт работы:</p>
+                            <a href="#appointment" class="btn" onclick="setSpecialist('Абдо Хуссеин Али')">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Цены -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <h2>Наши цены</h2>
+                <div class="pricing">
+                    <h3 class="price-category">Терапевтическая стоматология</h3>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Консультация стоматолога</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Лечение кариеса</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Лечение пульпита (1 канал)</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Герметизация фиссур</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Профессиональная гигиена полости рта</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+
+                    <h3 class="price-category">Хирургическая стоматология</h3>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Удаление зуба простое</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Удаление зуба сложное</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Удаление зуба мудрости</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Имплантация (1 зуб)</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="price-category">Ортопедическая стоматология</h3>
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Металлокерамическая коронка</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Циркониевая коронка</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Съемный протез (1 челюсть)</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                            <tr>
+                                <td>Бюгельный протез</td>
+                                <td>от 0 руб.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top: 30px; font-style: italic;">*Точную стоимость лечения можно узнать после консультации с врачом.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contacts" class="contacts-section">
+            <div class="container">
+                <h2>Контакты</h2>
+                <div class="contacts-container">
+                    <div class="contact-details">
+                        <h3>Как нас найти</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt" style="color: red;"></i>
+                            <div>
+                                <strong>Адрес:</strong>
+                                <p>Адрес</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Телефон:</strong>
+                                <p>+7 (495) 123-45-67</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope" style="color: rgb(62, 121, 248);"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <p>Email</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock" style="color: rgb(252, 137, 6);"></i>
+                            <div>
+                                <strong>Режим работы:</strong>
+                                <p>Пн-Пт: 9:00 - 20:00</p>
+                                <p>Сб-Вс: 10:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p&amp;source=constructor" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Форма записи -->
+        <section id="appointment" class="appointment-section">
+            <div class="container">
+                <h2>Записаться на прием</h2>
+                <form class="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Контактный телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="specialist">Специалист</label>
+                        <select id="specialist" name="specialist">
+                            <option value="">Выберите специалиста</option>
+                            <option value="Бобошко Артем Андреевич">Бобошко Артем Андреевич</option>
+                            <option value="Пригодей Елена Васильевна">Пригодей Елена Васильевна</option>
+                            <option value="Железко Антонина Михайловна">Железко Антонина Михайловна</option>
+                            <option value="Тюрина Светлана Александровна">Тюрина Светлана Александровна</option>
+                            <option value="Сулыма Александр Владимирович">Сулыма Александр Владимирович</option>
+                            <option value="Абдо Хуссеин Али">Абдо Хуссеин Али</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Услуга</label>
+                        <select id="service" name="service">
+                            <option value="consultation">Консультация</option>
+                            <option value="implantation">Имплантация</option>
+                            <option value="prosthetics">Протезирование</option>
+                            <option value="rehabilitation">Реабилитация</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Желаемая дата</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Дополнительная информация</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </section>
+        <script>
+            // Функция для установки выбранного специалиста при переходе по ссылке
+            function setSpecialist(specialistName) {
+                document.getElementById('specialist').value = specialistName;
+            }
+            
+            // Плавная прокрутка для якорных ссылок
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            // Обработка формы записи
+            const form = document.querySelector('.appointment-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Здесь можно добавить AJAX-запрос для отправки данных
+                alert('Ваша заявка принята! Мы свяжемся с вами в ближайшее время для подтверждения записи.');
+                form.reset();
+            });
+        </script>
+    </main>
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О клинике</h3>
+                    <p>Клиника реабилитационной стоматологии - это современный подход к восстановлению здоровья ваших зубов.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Адрес</p>
+                    <p><i class="fas fa-phone"></i> +7 978 827-85-06</p>
+                    <p><i class="fas fa-envelope"></i> Email</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Режим работы</h3>
+                    <p>Пн-Пт: 9:00 - 20:00</p>
+                    <p>Сб-Вс: 10:00 - 18:00</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Социальные сети</h3>
+                    <a href="#"><i class="fab fa-vk"></i> ВКонтакте</a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Клиника реабилитационной стоматологии. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
